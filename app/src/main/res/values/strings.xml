@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="month"> 月份 </string>
+    <string-array name="months">
+        <item> Jun </item>
+        <item> Feb </item>
+    </string-array>
+
 </resources>
