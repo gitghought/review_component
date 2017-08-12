@@ -11,7 +11,13 @@
     tools:context="com.simple.gh.myapplication.MainActivity">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
+        android:singleLine="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:scrollHorizontally="true"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:text="Hello 11111111111111111111111111111111111111111World!" />
 </RelativeLayout>
