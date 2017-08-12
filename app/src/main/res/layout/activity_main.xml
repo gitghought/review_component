@@ -11,10 +11,17 @@
     tools:context="com.simple.gh.myapplication.MainActivity">
 
     <android.support.v7.widget.AppCompatSpinner
+        android:id="@+id/spinner_season"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </android.support.v7.widget.AppCompatSpinner>
+
+    <Spinner
         android:id="@+id/spinner_month"
+        android:layout_toRightOf="@id/spinner_season"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-    </android.support.v7.widget.AppCompatSpinner>
+    </Spinner>
 
 </RelativeLayout>
