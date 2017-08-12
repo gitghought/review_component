@@ -14,7 +14,7 @@
         android:id="@+id/spinner_month"
         android:entries="@array/months"
         android:prompt="@string/month"
-        android:spinnerMode="dropdown"
+        android:spinnerMode="dialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
