@@ -10,6 +10,7 @@ import com.simple.gh.myapplication.fragment.FragmentChat;
 import com.simple.gh.myapplication.fragment.FragmentFind;
 import com.simple.gh.myapplication.fragment.FragmentFriend;
 import com.simple.gh.myapplication.fragment.FragmentMe;
+import com.simple.gh.myapplication.utils.MyLog;
 
 import java.util.ArrayList;
 
@@ -30,7 +31,22 @@ public class MainActivity extends AppCompatActivity {
                 frags);
 
         vp.setAdapter( adapter );
+//        vp.setOnPageChangeListener();
+        vp.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
 
+            @Override
+            public void onPageSelected(int position) {
+                MyLog.d(MyLog.TAG, "position = " + position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 
     private void initFragments() {
