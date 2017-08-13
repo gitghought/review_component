@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_height="70dp">
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:id="@+id/ll_chat"
+        android:layout_height="fill_parent">
+
+        <ImageView
+            android:id="@+id/img_chat"
+            android:layout_width="40dp"
+            android:src="@mipmap/ic_launcher"
+            android:layout_height="40dp" />
+        
+        <TextView
+            android:id="@+id/tv_chat"
+            android:text="微信"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:id="@+id/ll_friend"
+        android:layout_height="fill_parent">
+
+        <ImageView
+            android:id="@+id/img_friend"
+            android:layout_width="40dp"
+            android:src="@mipmap/ic_launcher"
+            android:layout_height="40dp" />
+
+        <TextView
+            android:id="@+id/tv_friend"
+            android:text="通讯录"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:id="@+id/ll_find"
+        android:layout_height="fill_parent">
+
+        <ImageView
+            android:id="@+id/img_find"
+            android:layout_width="40dp"
+            android:src="@mipmap/ic_launcher"
+            android:layout_height="40dp" />
+
+        <TextView
+            android:id="@+id/tv_find"
+            android:text="发现"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:id="@+id/ll_me"
+        android:layout_height="fill_parent">
+
+        <ImageView
+            android:id="@+id/img_me"
+            android:layout_width="40dp"
+            android:src="@mipmap/ic_launcher"
+            android:layout_height="40dp" />
+
+        <TextView
+            android:id="@+id/tv_me"
+            android:text="我"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+</LinearLayout>
+
