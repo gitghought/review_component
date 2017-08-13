@@ -1,12 +1,14 @@
 package com.simple.gh.myapplication;
 
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import com.simple.gh.myapplication.adapter.FragmentViewPagerStatePagerAdapter;
 import com.simple.gh.myapplication.adapter.FragmentViewpagerAdapter;
 import com.simple.gh.myapplication.adapter.MyViewPagerAdapter;
 import com.simple.gh.myapplication.fragment.FragmentPageOne;
@@ -19,7 +21,8 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager vp;
     private ArrayList<Fragment> frags = new ArrayList<>();
     private ArrayList<String> titles = new ArrayList<>();
-    private FragmentViewpagerAdapter adapter;
+//    private FragmentViewpagerAdapter adapter;
+    private FragmentStatePagerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +33,9 @@ public class MainActivity extends AppCompatActivity {
         initTitles();
 
         vp = (ViewPager) findViewById(R.id.vp_container);
-        adapter = new FragmentViewpagerAdapter(
+//        adapter = new FragmentViewpagerAdapter(
+//                this.getSupportFragmentManager(), frags, titles);
+        adapter = new FragmentViewPagerStatePagerAdapter(
                 this.getSupportFragmentManager(), frags, titles);
         vp.setAdapter(adapter);
     }
