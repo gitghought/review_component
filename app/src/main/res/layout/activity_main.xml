@@ -10,8 +10,11 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.simple.gh.myapplication.MainActivity">
 
-    <TextView
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_container"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_height="wrap_content">
+
+    </android.support.v4.view.ViewPager>
+
 </RelativeLayout>
