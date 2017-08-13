@@ -29,6 +29,7 @@ public class MyGridviewAdapter extends ArrayAdapter<MyVideos> {
     private ArrayList<MyVideos> videos = new ArrayList<>();
     private MyViewHolder holder;
     private int resource;
+    private boolean isDelshow;
 
     public MyGridviewAdapter(Context context, int resource, ArrayList<MyVideos> objects) {
         super(context, resource, objects);
@@ -40,6 +41,7 @@ public class MyGridviewAdapter extends ArrayAdapter<MyVideos> {
     private class MyViewHolder {
         private ImageView ivPic;
         private TextView tvCont;
+        private ImageView ivDel;
     }
 
     @Nullable
@@ -55,13 +57,13 @@ public class MyGridviewAdapter extends ArrayAdapter<MyVideos> {
 
     @Override
     public int getCount() {
-        return this.videos.size();
+        return this.videos.size() + 1;
     }
 
     @NonNull
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        View view;
+    public View getView(final int position, View convertView, ViewGroup parent) {
+        View view = null;
 
         if (convertView == null) {
             LayoutInflater inflater = LayoutInflater.from(this.mContext);
@@ -71,6 +73,14 @@ public class MyGridviewAdapter extends ArrayAdapter<MyVideos> {
 
             holder = new MyViewHolder();
             holder.ivPic = (ImageView) view.findViewById(R.id.iv_pic);
+            holder.ivDel= (ImageView) view.findViewById(R.id.iv_delete);
+            holder.ivDel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    videos.remove(position);
+                    MyGridviewAdapter.this.setOnShowDelete(false);
+                }
+            });
             holder.tvCont = (TextView) view.findViewById(R.id.tv_cont);
 
             convertView.setTag(holder);
@@ -79,11 +89,25 @@ public class MyGridviewAdapter extends ArrayAdapter<MyVideos> {
             holder = (MyViewHolder) view.getTag();
         }
 
-        holder.ivPic.setImageResource(android.R.drawable.ic_delete);
-        holder.tvCont.setText("good");
+        if (position < videos.size()) {
 
-        MyLog.d(MyLog.TAG, "end of getview");
+
+            holder.ivPic.setImageResource(videos.get(position).getImgID());
+            holder.tvCont.setText(videos.get(position).getContent());
+            if (this.isDelshow) {
+                holder.ivDel.setVisibility(ImageView.VISIBLE);
+            } else {
+                holder.ivDel.setVisibility(ImageView.GONE);
+            }
+        } else {
+            holder.ivPic.setImageResource(android.R.drawable.ic_menu_add);
+        }
 
         return view;
+    }
+
+    public void setOnShowDelete (boolean isShow) {
+        this.isDelshow = isShow;
+        this.notifyDataSetChanged();
     }
 }

@@ -35,13 +35,21 @@ public class MainActivity extends AppCompatActivity {
         initList();
 
         gvVideo = (GridView) this.findViewById(R.id.gv_video);
-        MyGridviewAdapter adapter =
+        final MyGridviewAdapter adapter =
                 new MyGridviewAdapter(this, R.layout.gridview_layout, this.videos);
         gvVideo.setAdapter(adapter);
         gvVideo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                int count = parent.getChildCount();
+                int adaCount = parent.getAdapter().getCount();
+                MyLog.d(MyLog.TAG, "count = " + count);
+                MyLog.d(MyLog.TAG, "adacount = " + adaCount);
                 MyLog.d(MyLog.TAG, "position = " + position);
+                if (position == (parent.getAdapter().getCount() - 1)) {
+                    addVideos();
+                    adapter.notifyDataSetChanged();
+                }
             }
         });
         gvVideo.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -57,5 +65,12 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    private void addVideos() {
+        MyVideos video = new MyVideos();
+        video.setContent("good" + " add");
+        video.setImgID(android.R.drawable.ic_dialog_email);
+        videos.add(video);
     }
 }
