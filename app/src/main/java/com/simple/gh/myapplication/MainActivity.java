@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager vp;
     private MyViewPagerAdapter adapter = null;
     private ArrayList<View> views = new ArrayList<>();
+    private ArrayList<String> titles = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,10 +22,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         initViews();
+        initTitles();
 
         vp = (ViewPager) findViewById(R.id.vp_container);
-        adapter = new MyViewPagerAdapter(views);
+        adapter = new MyViewPagerAdapter(titles, views);
         vp.setAdapter(adapter);
+    }
+
+    private void initTitles() {
+
+        for (int i = 0; i < 3; i++) {
+            titles.add("title" + i);
+        }
     }
 
     private void initViews() {
