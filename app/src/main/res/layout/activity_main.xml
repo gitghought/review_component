@@ -10,8 +10,15 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.simple.gh.myapplication.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
+    <GridView
+        android:horizontalSpacing="5dp"
+        android:id="@+id/gv_video"
+        android:verticalSpacing="5dp"
+        android:numColumns="3"
+        android:stretchMode="columnWidth"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </GridView>
+
 </RelativeLayout>
