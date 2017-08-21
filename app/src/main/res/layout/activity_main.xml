@@ -19,5 +19,7 @@
         android:ellipsize="marquee"
         android:marqueeRepeatLimit="marquee_forever"
         android:layout_height="wrap_content"
-        android:text="Hello 11111111111111111111111111111111111111111World!" />
+        android:drawableEnd="@mipmap/ic_launcher"
+        android:textAllCaps="true"
+        android:text="good" />
 </RelativeLayout>
