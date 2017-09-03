@@ -1,66 +1,42 @@
 package com.simple.gh.myapplication;
 
+import android.graphics.drawable.BitmapDrawable;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.simple.gh.myapplication.utils.MyLog;
 
-import static android.R.attr.id;
-
 public class MainActivity extends AppCompatActivity {
+    private ImageView ivShow;
+    private ImageView ivSubShow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        initView();
+
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
-        menu.add(Menu.NONE, 1,6,"menu 5");
+    public void testParam(int b, int c, String a) {
 
-        return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        switch (id) {
-            case R.id.menu_one:
-                MyLog.d(MyLog.TAG, "menu one");
-                break;
-            case R.id.menu_two:
-                MyLog.d(MyLog.TAG, "menu two");
-                break;
-            case R.id.menu_three:
-                MyLog.d(MyLog.TAG, "menu three");
-                break;
-        }
+    private void initView() {
+        //ImageView
+        this.ivShow = (ImageView) findViewById(R.id.iv_show);
+        this.ivShow.setLayoutParams(new LinearLayout.LayoutParams(200, 200));
+        int height = this.ivShow.getLayoutParams().height;
+        int wid = this.ivShow.getLayoutParams().width;
+        MyLog.d(MyLog.TAG, "height = " + height + "  width = " + wid);
 
-        return true;
-    }
+        BitmapDrawable bd = (BitmapDrawable) ivShow.getDrawable();
 
-    @Override
-    public boolean onMenuOpened(int featureId, Menu menu) {
-        MyLog.d(MyLog.TAG, "the menu opened");
-
-//    return super.onMenuOpened(featureId, menu);
-        return true;
-    }
-
-//    @Override
-//    public void onContextMenuClosed(Menu menu) {
-//
-//        super.onContextMenuClosed(menu);
-//        MyLog.d(MyLog.TAG, "the menu closed");
-//    }
-
-    @Override
-    public void onOptionsMenuClosed(Menu menu) {
-//        super.onOptionsMenuClosed(menu);
-        MyLog.d(MyLog.TAG, "the menu closed");
+        this.ivSubShow = (ImageView) findViewById(R.id.iv_sub_show);
+        this.ivSubShow.setImageDrawable(bd);
     }
 }
