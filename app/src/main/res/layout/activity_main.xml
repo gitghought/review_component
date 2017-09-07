@@ -12,4 +12,9 @@
         android:text="Get SQLite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btn_insert_data"
+        android:text="Insert Data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </LinearLayout>

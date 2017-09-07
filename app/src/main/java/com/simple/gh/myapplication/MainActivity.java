@@ -1,5 +1,6 @@
 package com.simple.gh.myapplication;
 
+import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,9 +14,11 @@ import com.simple.gh.myapplication.utils.MyLog;
 
 import static android.R.attr.id;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private MySQLite sql;
     private Button btnGetSql;
+    private Button btnInsertData;
+    private SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,17 +31,32 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initButton() {
+
         this.btnGetSql = (Button) findViewById(R.id.btn_get_sql);
-        this.btnGetSql.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SQLiteDatabase db = sql.getWritableDatabase();
-            }
-        });
+        this.btnGetSql.setOnClickListener(this);
     }
 
     private void initSQLite() {
         this.sql = new MySQLite(this, "MyContact", null, 3);
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_get_sql:
+
+                db = sql.getWritableDatabase();
+
+                break;
+            case R.id.btn_insert_data:
+
+                ContentValues values = new ContentValues();
+
+                values.put("name", "luck");
+                values.put("phonenum", "12998875643");
+                db.insert("MyContact",null , values);
+
+                break;
+        }
+    }
 }
