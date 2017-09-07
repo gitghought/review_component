@@ -35,11 +35,10 @@ public class MainActivity extends AppCompatActivity {
                 SQLiteDatabase db = sql.getWritableDatabase();
             }
         });
-
     }
 
     private void initSQLite() {
-        this.sql = new MySQLite(this, "MyContact", null, 1);
+        this.sql = new MySQLite(this, "MyContact", null, 3);
     }
 
 }
