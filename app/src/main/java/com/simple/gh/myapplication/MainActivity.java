@@ -18,6 +18,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private MySQLite sql;
     private Button btnGetSql;
     private Button btnInsertData;
+    private Button btnUpdateData;
+    private Button btnDeleteData;
     private SQLiteDatabase db;
 
     @Override
@@ -38,6 +40,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         this.btnInsertData= (Button) findViewById(R.id.btn_insert_data);
         this.btnInsertData.setOnClickListener(this);
 
+        this.btnUpdateData= (Button) findViewById(R.id.btn_update);
+        this.btnUpdateData.setOnClickListener(this);
+
+        this.btnDeleteData= (Button) findViewById(R.id.btn_delete);
+        this.btnDeleteData.setOnClickListener(this);
+
     }
 
     private void initSQLite() {
@@ -47,12 +55,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.btn_delete:
+                db = sql.getWritableDatabase();
+
+                db.execSQL("delete from contact where id=3");
+                break;
+            case R.id.btn_update:
+                db = sql.getWritableDatabase();
+
+                db.execSQL("update contact set name='gson' where id=3");
+
+                break;
             case R.id.btn_get_sql:
                 db = sql.getWritableDatabase();
 
                 break;
             case R.id.btn_insert_data:
-
 
 //                db = sql.getWritableDatabase();
 //                db.execSQL("insert into contact (name) values('good1')");
