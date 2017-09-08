@@ -11,7 +11,11 @@ import android.view.View;
 import android.widget.Button;
 
 import com.simple.gh.myapplication.sqlite.MySQLite;
+import com.simple.gh.myapplication.sqlobj.Contact;
 import com.simple.gh.myapplication.utils.MyLog;
+import com.simple.gh.myapplication.utils.SQLiteUtil;
+
+import java.util.ArrayList;
 
 import static android.R.attr.id;
 
@@ -23,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button btnDeleteData;
     private Button btnSeleteData;
     private SQLiteDatabase db;
+    private ArrayList<Contact> conts = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +36,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         initButton();
         initSQLite();
-
     }
 
     private void initButton() {
@@ -55,6 +59,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initSQLite() {
         this.sql = new MySQLite(this, "MyContact.db", null, 4);
+
+        readySQLData();
+    }
+
+    private void readySQLData() {
+        for (int i = 0; i < 10; i++) {
+            Contact cont = new Contact();
+            cont.setName("good" + i);
+            cont.setPhone("1509944883" + i);
+
+            conts.add(cont);
+        }
     }
 
     @Override
@@ -90,18 +106,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 break;
             case R.id.btn_insert_data:
+                db = sql.getWritableDatabase();
+
+                for ( int i = 0; i < conts.size(); i++) {
+
+                    SQLiteUtil.myInsert(sql,conts.get(i));
+                }
 
 //                db = sql.getWritableDatabase();
 //                db.execSQL("insert into contact (name) values('good1')");
 //                db.close();
 
-                db = sql.getWritableDatabase();
-
-                ContentValues values = new ContentValues();
-                values.put("name", "luck");
-                values.put("phonenum", "12998875643");
-
-                db.insert("contact", null, values);
+//                db = sql.getWritableDatabase();
+//
+//                ContentValues values = new ContentValues();
+//                values.put("name", "luck");
+//                values.put("phonenum", "12998875643");
+//
+//                db.insert("contact", null, values);
 
                 break;
         }
