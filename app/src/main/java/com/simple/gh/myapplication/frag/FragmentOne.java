@@ -45,12 +45,14 @@ public class FragmentOne extends Fragment implements View.OnClickListener{
             case R.id.btn_change_three:
 
                 trans.replace(R.id.ll_fragment_container, new FragmentThree());
+                trans.addToBackStack(null);
                 trans.commit();
 
                 break;
             case R.id.btn_change:
 
                 trans.replace(R.id.ll_fragment_container, new FragmentTwo());
+                trans.addToBackStack(null);
                 trans.commit();
 
                 break;
