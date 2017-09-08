@@ -13,11 +13,13 @@
         android:name="com.simple.gh.myapplication.frag.FragmentOne"
         android:layout_width="match_parent"
         android:layout_height="0dp" />
-    <fragment
-        android:layout_weight="1"
-        android:id="@+id/frag_two"
-        android:name="com.simple.gh.myapplication.frag.FragmentTwo"
+    <LinearLayout
+        android:id="@+id/ll_fragment_container"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="0dp" />
+        android:layout_weight="1"
+        android:layout_height="0dp">
+
+    </LinearLayout>
 
 </LinearLayout>

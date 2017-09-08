@@ -14,7 +14,7 @@ import com.simple.gh.myapplication.R;
  * Created by gh on 2017-09-08.
  */
 
-public class FragmentTwo extends Fragment{
+public class FragmentThree extends Fragment{
 
     @Nullable
     @Override
@@ -22,7 +22,7 @@ public class FragmentTwo extends Fragment{
         View view = inflater.inflate(R.layout.fragment_layout_two, container, false);
 
         TextView tvName = (TextView) view.findViewById(R.id.tv_phone);
-        tvName.setText("the second fragment");
+        tvName.setText("the third fragment");
 
         return view;
     }
