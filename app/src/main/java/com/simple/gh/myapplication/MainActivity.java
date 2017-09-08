@@ -34,27 +34,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         this.btnGetSql = (Button) findViewById(R.id.btn_get_sql);
         this.btnGetSql.setOnClickListener(this);
+
+        this.btnInsertData= (Button) findViewById(R.id.btn_insert_data);
+        this.btnInsertData.setOnClickListener(this);
+
     }
 
     private void initSQLite() {
-        this.sql = new MySQLite(this, "MyContact", null, 3);
+        this.sql = new MySQLite(this, "MyContact.db", null, 4);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_get_sql:
-
                 db = sql.getWritableDatabase();
 
                 break;
             case R.id.btn_insert_data:
 
-                ContentValues values = new ContentValues();
 
+//                db = sql.getWritableDatabase();
+//                db.execSQL("insert into contact (name) values('good1')");
+//                db.close();
+
+                db = sql.getWritableDatabase();
+
+                ContentValues values = new ContentValues();
                 values.put("name", "luck");
                 values.put("phonenum", "12998875643");
-                db.insert("MyContact",null , values);
+
+                db.insert("contact", null, values);
 
                 break;
         }
