@@ -1,6 +1,7 @@
 package com.simple.gh.myapplication;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button btnInsertData;
     private Button btnUpdateData;
     private Button btnDeleteData;
+    private Button btnSeleteData;
     private SQLiteDatabase db;
 
     @Override
@@ -46,6 +48,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         this.btnDeleteData= (Button) findViewById(R.id.btn_delete);
         this.btnDeleteData.setOnClickListener(this);
 
+        this.btnSeleteData= (Button) findViewById(R.id.btn_selete);
+        this.btnSeleteData.setOnClickListener(this);
+
     }
 
     private void initSQLite() {
@@ -55,10 +60,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.btn_selete:
+                db = sql.getWritableDatabase();
+
+                Cursor cursor = db.rawQuery("select * from contact", null);
+                if (cursor != null) {
+
+                    while (cursor.moveToNext()) {
+                        String name = cursor.getString(cursor.getColumnIndex("name"));
+                        MyLog.d(MyLog.TAG, "name = " + name);
+                    }
+                }
+
+                break;
             case R.id.btn_delete:
                 db = sql.getWritableDatabase();
 
                 db.execSQL("delete from contact where id=3");
+
                 break;
             case R.id.btn_update:
                 db = sql.getWritableDatabase();
