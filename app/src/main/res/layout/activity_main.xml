@@ -13,13 +13,21 @@
         android:name="com.simple.gh.myapplication.frag.FragmentOne"
         android:layout_width="match_parent"
         android:layout_height="0dp" />
-    <LinearLayout
-        android:id="@+id/ll_fragment_container"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_weight="1"
-        android:layout_height="0dp">
 
-    </LinearLayout>
+    <TextView
+        android:background="#f00"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:text="aa"
+        android:background="#000"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+    <TextView
+        android:text="aa"
+        android:background="#f00"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
