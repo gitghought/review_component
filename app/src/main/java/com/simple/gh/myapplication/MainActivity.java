@@ -1,5 +1,9 @@
 package com.simple.gh.myapplication;
 
+import android.content.Context;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -15,52 +19,34 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
-        menu.add(Menu.NONE, 1,6,"menu 5");
+        LocationManager locationManager;
+        String serviceName = Context.LOCATION_SERVICE;
+        locationManager = (LocationManager)getSystemService(serviceName);
 
-        return true;
-    }
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 1, new LocationListener() {
+            @Override
+            public void onLocationChanged(Location location) {
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        switch (id) {
-            case R.id.menu_one:
-                MyLog.d(MyLog.TAG, "menu one");
-                break;
-            case R.id.menu_two:
-                MyLog.d(MyLog.TAG, "menu two");
-                break;
-            case R.id.menu_three:
-                MyLog.d(MyLog.TAG, "menu three");
-                break;
-        }
+                MyLog.d(MyLog.TAG, "location = " + location.getLongitude());
 
-        return true;
-    }
+            }
 
-    @Override
-    public boolean onMenuOpened(int featureId, Menu menu) {
-        MyLog.d(MyLog.TAG, "the menu opened");
+            @Override
+            public void onStatusChanged(String provider, int status, Bundle extras) {
 
-//    return super.onMenuOpened(featureId, menu);
-        return true;
-    }
+            }
 
-//    @Override
-//    public void onContextMenuClosed(Menu menu) {
-//
-//        super.onContextMenuClosed(menu);
-//        MyLog.d(MyLog.TAG, "the menu closed");
-//    }
+            @Override
+            public void onProviderEnabled(String provider) {
 
-    @Override
-    public void onOptionsMenuClosed(Menu menu) {
-//        super.onOptionsMenuClosed(menu);
-        MyLog.d(MyLog.TAG, "the menu closed");
+            }
+
+            @Override
+            public void onProviderDisabled(String provider) {
+
+            }
+        });
+
     }
 }
