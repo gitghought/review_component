@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.simple.gh.myapplication.MainActivity">
+
+    <fragment
+        android:layout_weight="1"
+        android:id="@+id/frag_one"
+        android:name="com.simple.gh.myapplication.frag.FragmentOne"
+        android:layout_width="match_parent"
+        android:layout_height="0dp" />
+
+    <TextView
+        android:background="#f00"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:text="aa"
+        android:background="#000"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+    <TextView
+        android:text="aa"
+        android:background="#f00"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:id="@+id/ll_fragment_container"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="0dp">
+
+    </LinearLayout>
+
+</LinearLayout>
