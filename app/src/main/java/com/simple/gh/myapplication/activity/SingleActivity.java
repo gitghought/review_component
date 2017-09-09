@@ -1,6 +1,7 @@
 package com.simple.gh.myapplication.activity;
 
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -26,15 +27,17 @@ public class SingleActivity extends AppCompatActivity {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction trans = fm.beginTransaction();
 
-        trans.add(getFragmentContainer(), createFragment());
+        Fragment frag = fm.findFragmentById(R.id.fl_master_fragment_container);
 
-        trans.commit();
-
-
+        if (frag == null) {
+            frag = createFragment();
+            trans.add(getFragmentContainer(), frag);
+            trans.commit();
+        }
     }
 
     @NonNull
-    protected FragmentOne createFragment() {
+    protected Fragment createFragment() {
         return new FragmentOne();
     }
 
