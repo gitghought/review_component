@@ -11,6 +11,19 @@ import com.simple.gh.myapplication.sqlobj.FileInfo;
  */
 
 public class SqlUploadUtility {
+    public static void uploadDelete(MySQLite sql) {
+        SQLiteDatabase db = sql.getWritableDatabase();
+
+        //delete from uploadstore where id = (select max(id) from uploadstore);
+        String where = "id=?";
+        String[] whereArgs = {"(select max(id) from uploadstore)",};
+
+        db.execSQL("delete from uploadstore where id = ?", new String[] {"" +
+                "(select max(id) from uploadstore)"});
+
+//        db.delete(MySQLite.TABLE_NAME_UPLOAD, where, whereArgs);
+    }
+
     public static void uploadInsert(MySQLite sql, FileInfo cont) {
         SQLiteDatabase db = sql.getWritableDatabase();
 
@@ -22,6 +35,5 @@ public class SqlUploadUtility {
         val.put(MySQLite.UPLOAD_SEGMENT_CURRENT_POSITION, cont.getPos());
 
         db.insert(MySQLite.TABLE_NAME_UPLOAD, null, val);
-
     }
 }

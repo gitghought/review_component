@@ -14,31 +14,10 @@
         android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/btn_get_sql"
-        android:text="Get SQLite"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <Button
-        android:id="@+id/btn_insert_data"
-        android:text="Insert Data"
+        android:id="@+id/btn_upload_delete"
+        android:text="upload delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <Button
-        android:id="@+id/btn_update"
-        android:text="Update Data"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
-    <Button
-        android:id="@+id/btn_delete"
-        android:text="Delete Data"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/btn_selete"
-        android:text="Selete Data"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 </LinearLayout>
