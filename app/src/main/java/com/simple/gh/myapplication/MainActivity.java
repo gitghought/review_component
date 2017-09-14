@@ -11,7 +11,9 @@ import android.view.View;
 import android.widget.Button;
 
 import com.simple.gh.myapplication.sqlite.MySQLite;
+import com.simple.gh.myapplication.sqlite.SqlUploadUtility;
 import com.simple.gh.myapplication.sqlobj.Contact;
+import com.simple.gh.myapplication.sqlobj.FileInfo;
 import com.simple.gh.myapplication.utils.MyLog;
 import com.simple.gh.myapplication.utils.SQLiteUtil;
 
@@ -21,6 +23,7 @@ import static android.R.attr.id;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private MySQLite sql;
+    private Button btnUploadInsert;
     private Button btnGetSql;
     private Button btnInsertData;
     private Button btnUpdateData;
@@ -40,6 +43,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initButton() {
 
+        this.btnUploadInsert = (Button) findViewById(R.id.btn_upload_insert);
+        this.btnUploadInsert.setOnClickListener(this);
+
         this.btnGetSql = (Button) findViewById(R.id.btn_get_sql);
         this.btnGetSql.setOnClickListener(this);
 
@@ -58,9 +64,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initSQLite() {
-        this.sql = new MySQLite(this, "MyContact.db", null, 4);
+        this.sql = new MySQLite(this, MySQLite.SQLITE_NAME, null, 7);
 
-        readySQLData();
+//        readySQLData();
     }
 
     private void readySQLData() {
@@ -76,6 +82,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.btn_upload_insert:
+                FileInfo inf = new FileInfo();
+                inf.setLength(0);
+                inf.setPos(0);
+                inf.setServerip("172.20.10.7");
+                inf.setStart(0);
+                SqlUploadUtility.uploadInsert(sql, inf);
+                break;
             case R.id.btn_selete:
                 db = sql.getWritableDatabase();
 

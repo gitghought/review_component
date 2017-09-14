@@ -8,6 +8,12 @@
     tools:context="com.simple.gh.myapplication.MainActivity">
 
     <Button
+        android:id="@+id/btn_upload_insert"
+        android:text="upload insert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
         android:id="@+id/btn_get_sql"
         android:text="Get SQLite"
         android:layout_width="wrap_content"
