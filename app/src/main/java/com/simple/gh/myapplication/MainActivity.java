@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_upload_delete:
+                MyLog.d(MyLog.TAG, "delete");
                 SqlUploadUtility.uploadDelete(sql);
                 break;
             case R.id.btn_upload_insert:
