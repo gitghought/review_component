@@ -7,3 +7,12 @@
 /build
 /captures
 .externalNativeBuild
+/.idea/vcs.xml
+/app/.gitignore
+.gitignore~
+app/libs/
+app/src/main/java/com/simple/gh/myapplication/sql/
+app/src/main/java/com/simple/gh/myapplication/sqlite/SqlContactUtility.java
+libs/
+src/main/java/com/simple/gh/myapplication/sql/
+src/main/java/com/simple/gh/myapplication/sqlite/SqlContactUtility.java
