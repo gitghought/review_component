@@ -11,6 +11,26 @@ public class MyStringGenerateUtility {
             "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789" +
             "";
 
+    public static final String phoneSource = "0123456789";
+
+    public static String getPhoneNum () {
+        Random ran = new Random();
+
+        StringBuilder sb = new StringBuilder();
+        for (int j = 0; j < 4; j++) {
+
+            for (int i = 0; i < 3; i++)  {
+                sb.append( phoneSource.charAt(ran.nextInt(phoneSource.length())));
+            }
+            if (j < 3) {
+                sb.append(".");
+            }
+        }
+
+
+        return sb.toString();
+    }
+
     public static String getStr () {
         Random ran = new Random();
 
