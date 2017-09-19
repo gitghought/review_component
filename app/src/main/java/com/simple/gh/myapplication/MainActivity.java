@@ -10,11 +10,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.simple.gh.myapplication.obj.Contact;
 import com.simple.gh.myapplication.sqlite.MySQLite;
+import com.simple.gh.myapplication.sqlite.SqlContactUtility;
 import com.simple.gh.myapplication.sqlite.SqlUploadUtility;
-import com.simple.gh.myapplication.sqlobj.Contact;
 import com.simple.gh.myapplication.sqlobj.FileInfo;
 import com.simple.gh.myapplication.utils.MyLog;
+import com.simple.gh.myapplication.utils.MyStringGenerateUtility;
 import com.simple.gh.myapplication.utils.SQLiteUtil;
 
 import java.util.ArrayList;
@@ -74,9 +76,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void readySQLData() {
         for (int i = 0; i < 10; i++) {
-            Contact cont = new Contact();
-            cont.setName("good" + i);
-            cont.setPhone("1509944883" + i);
+            com.simple.gh.myapplication.obj.Contact cont = new Contact();
+
+            cont = SqlContactUtility.getContactObj();
 
             conts.add(cont);
         }
@@ -91,10 +93,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_upload_insert:
                 FileInfo inf = new FileInfo();
-                inf.setLength(0);
-                inf.setPos(0);
-                inf.setServerip("172.20.10.7");
-                inf.setStart(0);
+//                inf.setServerip("172.20.10.7");
+                inf.setServerip(MyStringGenerateUtility.getPhoneNum());
+
                 SqlUploadUtility.uploadInsert(sql, inf);
                 break;
 //            case R.id.btn_selete:

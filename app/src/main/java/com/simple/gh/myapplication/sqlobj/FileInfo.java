@@ -10,6 +10,12 @@ public class FileInfo {
     private int pos ;
     private int start ;
 
+    public FileInfo() {
+        length = 0;
+        pos = 0;
+        start = 0;
+    }
+
     public int getLength() {
         return length;
     }
